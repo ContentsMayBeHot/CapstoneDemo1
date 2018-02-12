@@ -1,0 +1,7 @@
+ActionType.ANG_TOGGLE_PRESS
+ActionType.ANG_LEFT
+ActionType.LEFT_RELEASE
+ActionType.ANG_TOGGLE_RELEASE
+ActionType.LEFT_PRESS
+ActionType.LEFT_TAP
+ActionType.LEFT_TAP

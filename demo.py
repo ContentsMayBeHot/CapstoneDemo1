@@ -2,19 +2,21 @@ import replayparser as rp
 import os
 import numpy as np
 from operator import itemgetter
+import skimage.io
+import cv2
 
 class OrderedList:
     def __init__(self, replay, frames_path):
         temp_list = []
         for file_name in os.listdir(frames_path):
-            if file_name is not ".DS_Store":
+            if file_name !=s ".DS_Store":
                 f = open("data/frames/sample/" + file_name, "rb")
-                frame_num = float(file_name)
+                frame_num = float(file_name[:-3])
                 data = np.load(f)
                 temp_list.append((frame_num, data))
                 f.close()
 
-        player = replay.players[0]
+        player = replay.players[1]
         for action in player.actions:
             temp_list.append((float(action.frame_index), action.type))
 
@@ -41,7 +43,13 @@ if __name__ == "__main__":
     replay = rp.Replay("data/replay.roa")
     events = OrderedList(replay, "data/frames/sample/")
 
-    print("Sorted List\n------------")
     for e in events.list:
-        print(e.frame[0], ":", e.action_list)
+        actions_string = ""
+        for action in e.action_list:
+            actions_string += str(action) + "\n"
+        skimage.io.imsave('output/tmp.png', e.frame[1])
+        f = open("output/tmp.txt", "w+")
+        f.write(actions_string)
+        f.close()
+        input("cont...")
     print("OWO: it doesn't error")
