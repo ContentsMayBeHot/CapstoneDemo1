@@ -6,6 +6,7 @@ import skimage.io
 import cv2
 import time
 
+
 class OrderedList:
     def __init__(self, replay, frames_path):
         temp_list = []
@@ -21,7 +22,7 @@ class OrderedList:
         for action in player.actions:
             temp_list.append((float(action.frame_index), action.type))
 
-        temp_list.sort(key = itemgetter(0))
+        temp_list.sort(key=itemgetter(0))
         self.list = []
         self.frame_action_packager(temp_list)
 
@@ -34,10 +35,12 @@ class OrderedList:
             else:
                 actions.append(item[1])
 
+
 class Package:
     def __init__(self, frame, action_list):
         self.frame = frame
         self.action_list = action_list
+
 
 if __name__ == "__main__":
     replay = rp.Replay("data/replay.roa")
