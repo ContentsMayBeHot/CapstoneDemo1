@@ -4,12 +4,13 @@ import numpy as np
 from operator import itemgetter
 import skimage.io
 import cv2
+import time
 
 class OrderedList:
     def __init__(self, replay, frames_path):
         temp_list = []
         for file_name in os.listdir(frames_path):
-            if file_name !=s ".DS_Store":
+            if file_name != ".DS_Store":
                 f = open("data/frames/sample/" + file_name, "rb")
                 frame_num = float(file_name[:-3])
                 data = np.load(f)
@@ -39,7 +40,6 @@ class Package:
         self.action_list = action_list
 
 if __name__ == "__main__":
-    # do stuff
     replay = rp.Replay("data/replay.roa")
     events = OrderedList(replay, "data/frames/sample/")
 
@@ -51,5 +51,6 @@ if __name__ == "__main__":
         f = open("output/tmp.txt", "w+")
         f.write(actions_string)
         f.close()
-        input("cont...")
+        print("frame", e.frame[0])
+        time.sleep(1)
     print("OWO: it doesn't error")
