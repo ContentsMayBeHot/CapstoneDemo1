@@ -1,12 +1,2 @@
-ActionType.ANG_TOGGLE_RELEASE
-ActionType.RIGHT_PRESS
-ActionType.ANG_RIGHT
-ActionType.RIGHT_TAP
-ActionType.RIGHT_TAP
-ActionType.ANG_RIGHT
-ActionType.ANG_RIGHT
 ActionType.ANG_UP_RIGHT
-ActionType.ANG_UP_RIGHT
-ActionType.UP_PRESS
-ActionType.SPECIAL_PRESS
 ActionType.UP_TAP

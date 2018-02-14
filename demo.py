@@ -11,8 +11,8 @@ class OrderedList:
     def __init__(self, replay, frames_path):
         temp_list = []
         for file_name in os.listdir(frames_path):
-            if file_name != ".DS_Store":
-                f = open("data/frames/sample/" + file_name, "rb")
+            if file_name.endswith(".np"):
+                f = open(frames_path + file_name, "rb")
                 frame_num = float(file_name[:-3])
                 data = np.load(f)
                 temp_list.append((frame_num, data))
@@ -44,7 +44,14 @@ class Package:
 
 if __name__ == "__main__":
     replay = rp.Replay("data/replay.roa")
-    events = OrderedList(replay, "data/frames/sample/")
+    events = OrderedList(replay, "data/frames/sample_t/")
+
+    player = replay.players[1]
+    f_pl = open("output/player.txt", "w+")
+    player_str = "Reading Player 2(" + player.name + ")"
+    player_str += "\nPlaying " + str(player.character)
+    f_pl.write(player_str)
+    f_pl.close()
 
     for e in events.list:
         actions_string = ""
