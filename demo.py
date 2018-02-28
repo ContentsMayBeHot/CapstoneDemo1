@@ -62,5 +62,5 @@ if __name__ == "__main__":
         f.write(actions_string)
         f.close()
         print("frame", e.frame[0])
-        time.sleep(1)
+        input("Press Enter to Progress Frame...")
     print("OWO: it doesn't error")

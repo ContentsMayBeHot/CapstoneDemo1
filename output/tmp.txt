@@ -1,2 +1,1 @@
-ActionType.ANG_UP_RIGHT
-ActionType.UP_TAP
+ActionType.ATTACK_RELEASE
