@@ -1,4 +1,3 @@
-import roaparser as rp
 import os
 import time
 import numpy as np
@@ -21,11 +20,6 @@ class SyncedReplay:
         self.initialize_actions_from_npy(numpy_path)
         self.sync_actions()
 
-    def create_sync_from_replay(self, frame_dirpath, replay, player_id = 0):
-        self.initialize_frames(frame_dirpath)
-        self.initialize_actions_from_replay(replay, player_id)
-        self.sync_actions()
-
     def initialize_frames(self, frame_dirpath):
         for numpy_fname in os.listdir(frame_dirpath):
             if numpy_fname.endswith(".np") or numpy_fname.endswith(".npy"):
@@ -38,18 +32,6 @@ class SyncedReplay:
                 data = np.load(f_out)
                 f_out.close()
                 self.list.append((frame_num, data, True))
-
-    def initialize_actions_from_replay(self, replay, player_id = 0):
-        if isinstance(replay, rp.Replay):
-            actions = replay.players[player_id].collapse_actions()
-            for action in actions:
-                self.list.append((action[0], action[1], False))
-
-        else:
-            r_temp = rp.Replay(replay)
-            actions = r_temp.players[player_id].collapse_actions()
-            for action in acftions:
-                self.list.append((action[0], action[1], False))
 
     def initialize_actions_from_npy(self, action_numpypath):
         actions = np.load(action_numpypath)
