@@ -9,6 +9,10 @@ class SyncedFrame:
         self.frame = frame
         self.actions = action_matrix
 
+    def normalize(self):
+        if self.actions is None:
+            self.actions = np.zeroes(26)
+
 
 class SyncedReplay:
     def __init__(self):
@@ -46,6 +50,7 @@ class SyncedReplay:
         for item in self.list:
             if item[2]:
                 self.synced_frames.append(SyncedFrame(item[1], temp_actions))
+                self.synced_frames[-1].normalize()
                 temp_actions = None
 
             else:
@@ -54,6 +59,10 @@ class SyncedReplay:
 
                 else:
                     temp_actions = np.add(temp_actions, item[1])
+
+    def normalize(self):
+        for synced in self.synced_frames:
+            synced.normalize()
 
 if __name__ == "__main__":
 
