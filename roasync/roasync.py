@@ -11,7 +11,7 @@ class SyncedFrame:
 
     def normalize(self):
         if self.actions is None:
-            self.actions = np.zeroes(26)
+            self.actions = np.zeros(26)
 
 
 class SyncedReplay:
